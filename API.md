@@ -138,7 +138,7 @@
 
 ## 2.4. 获取心愿信息
 
-- GET /wish/info
+- GET /wish/info?
   - id : 心愿id
 
 - return :
