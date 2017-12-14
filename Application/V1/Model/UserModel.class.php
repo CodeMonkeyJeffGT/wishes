@@ -49,6 +49,22 @@ class UserModel extends Model {
 		}
 	}
 
+	public function userInfo($id)
+	{
+		$sql = '
+			SELECT `nickname`, `phone`
+			FROM `user`
+			WHERE `id` = %d;
+		';
+		$user = $this->query($sql, $id);
+		if(empty($user))
+		{
+			$this->errmsg = '用户不存在';
+			return FALSE;
+		}
+		return $user[0];
+	}
+
 	public function getError()
 	{
 		return $this->errmsg;

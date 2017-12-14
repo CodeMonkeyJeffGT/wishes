@@ -110,16 +110,14 @@
 
 ## 2.3. 发布心愿（发布）
 
-- GET /wish/pub
+- POST /wish/pub
 
 - payload :
 
 ```json
 {
     "content": "心愿内容",
-    "img": {
-        "id": "图片id，通过图片上传方法获取"
-    },
+    "img": "图片url，通过图片上传方法获取",
     "guy": "联系人",
     "phone": "联系方式",
     "deadline": "截止时间"
@@ -248,5 +246,5 @@
 ```json
     "code": 0,
     "message": "",
-    "data": null
+    "data": "图片url"
 ```
