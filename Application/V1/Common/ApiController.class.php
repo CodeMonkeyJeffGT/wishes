@@ -3,14 +3,25 @@ namespace V1\Common;
 use Think\Controller;
 class ApiController extends Controller {
 
+	protected $appid = 'wx00c21901537bc5a6';
+	protected $secret = '821ab731206d8993146f3d151d6217b5';
+	protected $use_wx = TRUE;
+	protected $wx;
+
 	public function __construct(){
 		parent::__construct();
+		Vendor('Wx');
+
+		session('user', '1');
+
 		$this->checkLogin();
+		if($this->use_wx)
+			$this->wx = $this->wx();
 	}
 
 	private function checkLogin(){
 		$path_info = I('server.PATH_INFO', '');
-		if($path_info === 'user/login')
+		if(FALSE !== strpos($path_info, 'user/login'))
 		{
 			return TRUE;
 		}
@@ -19,7 +30,7 @@ class ApiController extends Controller {
 		{
 			$this->apiReturn('url错误', FALSE);
 		}
-		if(empty(session('user')))
+		if(empty(session('user')) && empty(session('acc')))
 		{
 			$this->goLogin();
 		}
@@ -35,7 +46,7 @@ class ApiController extends Controller {
 		$this->ajaxReturn($result);
 	}
 
-	protected function apiReturn($data = array(), $correct = TRUE)
+	protected function apiReturn($data = array(), bool $correct = TRUE)
 	{
 		$result = array(
 			'code'    => 0,
@@ -49,6 +60,17 @@ class ApiController extends Controller {
 			);
 		}
 		$this->ajaxReturn($result);
+	}
+
+	private function wx()
+	{
+        if(empty(S('access_token')))
+        {
+	        $wx = new \Wx($this->appid, $this->secret);
+	        S('access_token', $wx->getAccess_token, 3600);
+	        return $wx;
+        }
+        return new \Wx($this->appid, $this->secret, S('access_token'));
 	}
 
 }

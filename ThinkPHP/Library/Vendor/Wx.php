@@ -42,7 +42,7 @@ class Wx{
 	 * @param state 	 	string  额外参数
 	 * @return NULL
 	 */
-	public function userCode(string $redirect_uri, boolean $info = TRUE, string $state = '')
+	public function userCode(string $redirect_uri, bool $info = TRUE, string $state = '')
 	{
 		$scope = $info ? 'snsapi_userinfo' : 'snsapi_base';
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->appid . '&redirect_uri=' . urlencode($redirect_uri) . '&response_type=code&scope=' . $scope . '&state=' . $state . '#wechat_redirect';
@@ -105,7 +105,7 @@ class Wx{
 	 * @param miniprogram 	array 	微信小程序
 	 * @return array
 	 */
-	public function msgTemp($openid, $template_id, $data, $url = FALSE, $miniprogram == FALSE)
+	public function msgTemp($openid, $template_id, $data, $url = FALSE, $miniprogram = FALSE)
 	{
 		$url = $this->domain . '/cgi-bin/message/template/send?access_token=' . $this->access_token;
 		$data = array(
