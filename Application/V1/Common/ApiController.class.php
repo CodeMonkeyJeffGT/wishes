@@ -11,6 +11,8 @@ class ApiController extends Controller {
 	public function __construct(){
 		parent::__construct();
 		Vendor('Wx');
+		date_default_timezone_set('PRC');
+        header('Access-Control-Allow-Origin:*');
 
 		session('user', '1');
 
@@ -40,8 +42,7 @@ class ApiController extends Controller {
 	{
 		$result = array(
 			'code'    => 2,
-			'message' => '请登录',
-			'data'    => NULL
+			'message' => '请登录'
 		);
 		$this->ajaxReturn($result);
 	}
@@ -59,6 +60,7 @@ class ApiController extends Controller {
 				'message' => $data
 			);
 		}
+		$result = html_escape($result);
 		$this->ajaxReturn($result);
 	}
 
