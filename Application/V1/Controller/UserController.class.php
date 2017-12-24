@@ -2,8 +2,7 @@
 namespace V1\Controller;
 use V1\Common\ApiController;
 class UserController extends ApiController {
-
-	protected $use_wx = TRUE;
+	
 	private $user;
 
 	public function __construct(){
@@ -13,8 +12,8 @@ class UserController extends ApiController {
 
 	public function login()
 	{
-		$account = I('get.account');
-		$password = I('get.password');
+		$account = I('post.account');
+		$password = I('post.password');
 
 		if($this->user->login($account, $password))//登陆成功
 		{

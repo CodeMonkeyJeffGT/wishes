@@ -2,7 +2,7 @@
 namespace V1\Controller;
 use V1\Common\ApiController;
 class WishController extends ApiController {
-	protected $use_wx = TRUE;
+	
 	protected $wish;
 
 	public function __construct()
@@ -14,28 +14,34 @@ class WishController extends ApiController {
 	public function list()
 	{
 		$u_id = session('user');
+		if(empty($u_id))
+			$this->goLogin();
 		$list = $this->wish->list($u_id);
 		$this->apiReturn($list);
+	}
+
+	public function nefuerPage()
+	{
+		header('location:/1217/list.html');die;
+	}
+
+	public function listAll()
+	{
+		$au_id = session('acc');
+		if(empty($au_id))
+			$this->goLogin();
+		$this->apiReturn($this->wish->listAll($au_id));
 	}
 
 	public function pubPage()
 	{
 		$user = D('user');
-		$userInfo = $user->userInfo();
+		$userInfo = $user->userInfo(session('user'));
 		if(FALSE === $userInfo)
 		{
 			$this->apiReturn($user->getError(), FALSE);
 		}
-		//模板暂未通过审核
-		// $userList = D('nefuer')->list();
-		// $template_id = '';
-		// $data = array();
-		// $url = 'http://wish.nefuer.net/';
-		// for($i = 0, $iloop = count($userList); $i < $iloop; $i++)
-		// {
-		// 	$this->wx->msgTemp($openid, $template_id, $data, $url);
-		// }
-		return $userInfo;
+		$this->apiReturn($userInfo);
 	}
 
 	public function pub()
@@ -49,7 +55,7 @@ class WishController extends ApiController {
 		$deadline = $data['deadline'];
 
 		$user = D('user');
-		$userInfo = $user->userInfo();
+		$userInfo = $user->userInfo(session('user'));
 		if(FALSE === $userInfo)
 		{
 			$this->apiReturn($user->getError(), FALSE);
@@ -62,7 +68,7 @@ class WishController extends ApiController {
 			$this->apiReturn('请填写联系方式', FALSE);
 		if(empty($deadline))
 			$this->apiReturn('请填写截止时间', FALSE);
-		$deadline = strtotime($deadline);
+		$deadline = strtotime($deadline . ':00');
 		if($deadline - time() < 900)
 			$this->apiReturn('截止时间至少为15分钟，请修改', FALSE);
 
@@ -105,7 +111,7 @@ class WishController extends ApiController {
 		$u_id = session('acc');
 		if(empty($u_id))
 			$this->apiReturn('请使用学生端登录');
-		$data = I('post.data');
+		$data = I('post.');
 		$id = $data['id'];
 		$guy = $data['guy'];
 		$phone = $data['phone'];

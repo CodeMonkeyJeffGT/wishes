@@ -37,7 +37,7 @@
 
 ```json
 {
-    "username": "账号",
+    "account": "账号",
     "password": "密码"
 }
 ```

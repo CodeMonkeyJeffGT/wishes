@@ -293,3 +293,12 @@ INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000452s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.000473s ]
 ERR: 调用接口的IP地址不在白名单中，请在接口IP白名单中进行设置
 
+[ 2017-12-14T22:46:56+08:00 ] ::1 /wishes/v1/user/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015097s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026208s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.026241s ]
+ERR: 调用接口的IP地址不在白名单中，请在接口IP白名单中进行设置
+

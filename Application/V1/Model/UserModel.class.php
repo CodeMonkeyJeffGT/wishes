@@ -24,7 +24,7 @@ class UserModel extends Model {
 		$sql = '
 			SELECT `id`, `openid`, `password`
 			FROM `user`
-			WHERE `accnout` = "%s";
+			WHERE `account` = "%s";
 		';
 		$user = $this->query($sql, $account);
 		if(empty($user))
@@ -47,12 +47,13 @@ class UserModel extends Model {
 			';
 			$this->execute($sql, sesison('openid'), $user[0]['id']);
 		}
+		return TRUE;
 	}
 
 	public function userInfo($id)
 	{
 		$sql = '
-			SELECT `nickname`, `phone`
+			SELECT `nickname` `guy`, `phone`
 			FROM `user`
 			WHERE `id` = %d;
 		';
@@ -62,6 +63,8 @@ class UserModel extends Model {
 			$this->errmsg = '用户不存在';
 			return FALSE;
 		}
+		$user[0]['deadline_d'] = date('Y-m-d', time() + 86400);
+		$user[0]['deadline_t'] = date('H:i', time() + 86400);
 		return $user[0];
 	}
 

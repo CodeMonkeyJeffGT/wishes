@@ -8,12 +8,67 @@ class WishModel extends Model {
 	public function list($u_id)
 	{
 		$sql = '
-			SELECT `id`, `time`, `deadline`, `content`
+			SELECT `id`, `created`, `deadline`, `content`, `angel_id`
 			FROM `wish`
-			WHERE `u_id` = %d;
+			WHERE `u_id` = %d AND `deadline` > %d AND `cancel_time` = 0;
 		';
-		$wishes = $this->query($sql, $u_id);
-		return $wishes;
+		$wishes = $this->query($sql, $u_id, time());
+		$wish_arr = array(
+			'accepted' => array(),
+			'unaccepted' => array()
+		);
+		for($i = 0, $iloop =count($wishes); $i < $iloop; $i++)
+		{
+			$wishes[$i]['time'] = date('m月d日 H:s', $wishes[$i]['created']);
+			unset($wishes[$i]['created']);
+			$wishes[$i]['deadline'] = date('m月d日 H:s', $wishes[$i]['deadline']);
+
+			if(empty($wishes[$i]['angel_id']))
+			{
+				unset($wishes[$i]['angel_id']);
+				$wish_arr['unaccepted'][] = $wishes[$i];
+			}
+			else
+			{
+				unset($wishes[$i]['angel_id']);
+				$wish_arr['accepted'][] = $wishes[$i];
+			}
+		}
+		return $wish_arr;
+	}
+
+	public function listAll($au_id)
+	{
+		$sql = '
+			SELECT `id`, `created`, `deadline`, `content`, `angel_id`
+			FROM `wish`
+			WHERE (`angel_id` = 0 AND `deadline` > %d AND `cancel_time` = 0)
+				OR (`angel_id` = %d)
+			ORDER BY `done` DESC;
+		';
+		$wishes = $this->query($sql, time(), $au_id);
+		$wish_arr = array(
+			'accepted' => array(),
+			'unaccepted' => array()
+		);
+		for($i = 0, $iloop =count($wishes); $i < $iloop; $i++)
+		{
+			$wishes[$i]['time'] = date('m月d日 H:s', $wishes[$i]['created']);
+			unset($wishes[$i]['created']);
+			$wishes[$i]['deadline'] = date('m月d日 H:s', $wishes[$i]['deadline']);
+
+			if(empty($wishes[$i]['angel_id']))
+			{
+				unset($wishes[$i]['angel_id']);
+				$wish_arr['unaccepted'][] = $wishes[$i];
+			}
+			else
+			{
+				unset($wishes[$i]['angel_id']);
+				$wish_arr['accepted'][] = $wishes[$i];
+			}
+		}
+		return $wish_arr;
 	}
 
 	public function pub($u_id, $content, $img,  $guy, $phone, $deadline)
@@ -22,7 +77,7 @@ class WishModel extends Model {
 			INSERT INTO `wish`(`u_id`, `content`, `img`, `guy`, `phone`, `deadline`, `created`)
 			VALUES(%d, "%s", "%s", "%s", "%s", %d, %d);
 		';
-		$this->execute($sql, array($u_id, $content, $img, $guy, $phone, time()));
+		$this->execute($sql, $u_id, $content, $img, $guy, $phone, $deadline, time());
 		return TRUE;
 	}
 
@@ -52,6 +107,9 @@ class WishModel extends Model {
 				'phone' => $wish['angel_phone'],
 				'done' => $wish['done']
 			);
+		$week = array('日', '一', '二', '三', '四', '五', '六');
+		$wish['time'] = date('m月d日 星期', $wish['time']) . $week[date('w', $wish['time'])] . date(' H:s', $wish['time']);
+		$wish['deadline'] = date('m月d日 星期', $wish['deadline']) . $week[date('w', $wish['deadline'])] . date(' H:s', $wish['deadline']);
 		unset($wish['angel_guy']);
 		unset($wish['angel_phone']);
 		unset($wish['done']);
@@ -64,7 +122,7 @@ class WishModel extends Model {
 		$sql = '
 			SELECT `u_id`
 			FROM `wish`
-			WHERE `id` = %d;
+			WHERE `id` = %d AND `cancel_time` = 0;
 		';
 		$u_id_sql = $this->query($sql, $id);
 		if(empty($u_id))
@@ -79,7 +137,7 @@ class WishModel extends Model {
 		}
 		$sql = '
 			UPDATE `wish`
-			SET `cancel_reason` = "%s", `cancel_time`
+			SET `cancel_reason` = "%s", `cancel_time` = %d
 			WHERE `id` = %d;
 		';
 		$this->execute($sql, array($reason, time(), $id));

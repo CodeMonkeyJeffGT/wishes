@@ -1,6 +1,6 @@
 <?php 
 
-html_escape($var)
+function html_escape($var)
 {
 	if(is_array($var))
 	{

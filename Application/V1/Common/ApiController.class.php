@@ -12,9 +12,11 @@ class ApiController extends Controller {
 		parent::__construct();
 		Vendor('Wx');
 		date_default_timezone_set('PRC');
-        header('Access-Control-Allow-Origin:*');
-
-		session('user', '1');
+		header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Origin:null');
+        header('Access-Control-Allow-Headers:token, Origin, X-Requested-With, Content-Type, Accept');
+        header('Access-Control-Allow-Methods:PUT,POST,GET,DELETE,OPTIONS');
+        header('X-Powered-By: 3.2.1');
 
 		$this->checkLogin();
 		if($this->use_wx)
@@ -34,6 +36,11 @@ class ApiController extends Controller {
 		}
 		if(empty(session('user')) && empty(session('acc')))
 		{
+			if(isset($_GET['acc']))
+			{
+				session('acc', $_GET['acc']);
+				return;
+			}
 			$this->goLogin();
 		}
 	}
