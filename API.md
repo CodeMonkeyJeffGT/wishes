@@ -20,7 +20,7 @@
 
 # 0. tips
 
-- 以下所有url的根均为 http://wish.nefuer.net/v1
+- 以下所有url的根均为 http://wish.jblog.info/v1
 - code :
   - 0 : 一切正常
   - 1 : 直接将 message 展示给用户
