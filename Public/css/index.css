@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+#container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(204,204,204);
+}
+#teacher{
+    width: 100%;
+    height:50vh;
+    background: #409EFF;
+    color:#fff;
+    text-align: center;
+    font-size:1rem;
+}
+#teacher img{
+    width: 50%;
+    margin-top: 1rem;
+}
+
+#student{
+    width: 100%;
+    height:50vh;
+    background: #fff;
+    color:#409EFF;
+    text-align: center;
+    font-size:1rem;
+}
+#student img{
+    width: 50%;
+    margin-top: 1rem;
+}

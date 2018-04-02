@@ -5,7 +5,7 @@ class ApiController extends Controller {
 
 	protected $appid = 'wx00c21901537bc5a6';
 	protected $secret = '821ab731206d8993146f3d151d6217b5';
-	protected $use_wx = TRUE;
+	protected $use_wx = true;
 	protected $wx;
 
 	public function __construct(){
@@ -25,21 +25,21 @@ class ApiController extends Controller {
 
 	private function checkLogin(){
 		$path_info = I('server.PATH_INFO', '');
-		if(FALSE !== strpos($path_info, 'user/login'))
+		if(false !== strpos($path_info, 'user/login'))
 		{
-			return TRUE;
+			return true;
 		}
 		$path_info = explode('/', $path_info);
 		if(empty($path_info[0]) || empty($path_info[1]))
 		{
-			$this->apiReturn('url错误', FALSE);
+			$this->apiReturn('url错误', false);
 		}
 		if(empty(session('user')) && empty(session('acc')))
 		{
 			if(isset($_GET['acc']))
 			{
 				session('acc', $_GET['acc']);
-				return;
+				return true;
 			}
 			$this->goLogin();
 		}
@@ -54,7 +54,7 @@ class ApiController extends Controller {
 		$this->ajaxReturn($result);
 	}
 
-	protected function apiReturn($data = array(), bool $correct = TRUE)
+	protected function apiReturn($data = array(), bool $correct = true)
 	{
 		$result = array(
 			'code'    => 0,

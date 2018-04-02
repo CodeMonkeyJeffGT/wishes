@@ -13,7 +13,7 @@ class ImgController extends ApiController {
 	    // 上传文件 
 	    $info   =   $upload->upload();
 	    if( ! $info) {// 上传错误提示错误信息
-	        $this->apiReturn($upload->getError(), FALSE);
+	        $this->apiReturn($upload->getError(), false);
 	    }else{// 上传成功
 	        $this->apiReturn('http://wish.jblog.info/Uploads/' . $info['pic']['savepath'] . $info['pic']['savename']);
 	    }

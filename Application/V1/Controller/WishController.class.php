@@ -37,9 +37,9 @@ class WishController extends ApiController {
 	{
 		$user = D('user');
 		$userInfo = $user->userInfo(session('user'));
-		if(FALSE === $userInfo)
+		if(false === $userInfo)
 		{
-			$this->apiReturn($user->getError(), FALSE);
+			$this->apiReturn($user->getError(), false);
 		}
 		$this->apiReturn($userInfo);
 	}
@@ -56,21 +56,21 @@ class WishController extends ApiController {
 
 		$user = D('user');
 		$userInfo = $user->userInfo(session('user'));
-		if(FALSE === $userInfo)
+		if(false === $userInfo)
 		{
-			$this->apiReturn($user->getError(), FALSE);
+			$this->apiReturn($user->getError(), false);
 		}
 		if(empty($content))
-			$this->apiReturn('请填写心愿内容', FALSE);
+			$this->apiReturn('请填写心愿内容', false);
 		if(empty($guy))
-			$this->apiReturn('请填写联系人', FALSE);
+			$this->apiReturn('请填写联系人', false);
 		if(empty($phone))
-			$this->apiReturn('请填写联系方式', FALSE);
+			$this->apiReturn('请填写联系方式', false);
 		if(empty($deadline))
-			$this->apiReturn('请填写截止时间', FALSE);
+			$this->apiReturn('请填写截止时间', false);
 		$deadline = strtotime($deadline . ':00');
 		if($deadline - time() < 900)
-			$this->apiReturn('截止时间至少为15分钟，请修改', FALSE);
+			$this->apiReturn('截止时间至少为15分钟，请修改', false);
 
 		$this->wish->pub($u_id, $content, $img,  $guy, $phone, $deadline);
 		$this->apiReturn();
@@ -80,12 +80,12 @@ class WishController extends ApiController {
 	{
 		$id = I('get.id');
 		if(empty($id))
-			$this->apiReturn('请指定心愿id', FALSE);
+			$this->apiReturn('请指定心愿id', false);
 
 		$wishInfo = $this->wish->wishInfo($id);
-		if(FALSE === $wishInfo)
+		if(false === $wishInfo)
 		{
-			$this->apiReturn($this->wish->getError(), FALSE);
+			$this->apiReturn($this->wish->getError(), false);
 		}
 		$this->apiReturn($wishInfo);
 	}
@@ -95,13 +95,13 @@ class WishController extends ApiController {
 		$id = I('post.id');
 		$reason = I('post.reason');
 		if(empty($id))
-			$this->apiReturn('请指定心愿id', FALSE);
+			$this->apiReturn('请指定心愿id', false);
 		if(empty($reason))
-			$this->apiReturn('请填写取消原因', FALSE);
+			$this->apiReturn('请填写取消原因', false);
 		$wishCancel = $this->wish->cancel($id, $reason);
-		if(FALSE === $wishCancel)
+		if(false === $wishCancel)
 		{
-			$this->apiReturn($this->wish->getError(), FALSE);
+			$this->apiReturn($this->wish->getError(), false);
 		}
 		$this->apiReturn();
 	}
@@ -116,16 +116,16 @@ class WishController extends ApiController {
 		$guy = $data['guy'];
 		$phone = $data['phone'];
 		if(empty($id))
-			$this->apiReturn('请指定心愿id', FALSE);
+			$this->apiReturn('请指定心愿id', false);
 		if(empty($guy))
-			$this->apiReturn('请填写联系人', FALSE);
+			$this->apiReturn('请填写联系人', false);
 		if(empty($phone))
-			$this->apiReturn('请填写联系方式', FALSE);
+			$this->apiReturn('请填写联系方式', false);
 
 		$wishAccept = $this->wish->accept($id, $u_id, $guy, $phone);
-		if(FALSE === $wishAccept)
+		if(false === $wishAccept)
 		{
-			$this->apiReturn($this->wish->getError(), FALSE);
+			$this->apiReturn($this->wish->getError(), false);
 		}
 		$this->apiReturn();
 	}
@@ -134,11 +134,11 @@ class WishController extends ApiController {
 	{
 		$id = I('post.id');
 		if(empty($id))
-			$this->apiReturn('请指定心愿id', FALSE);
+			$this->apiReturn('请指定心愿id', false);
 		$wishConfirm = $this->wish->confirm($id);
-		if(FALSE === $wishConfirm)
+		if(false === $wishConfirm)
 		{
-			$this->apiReturn($this->wish->getError(), FALSE);
+			$this->apiReturn($this->wish->getError(), false);
 		}
 		$this->apiReturn();
 	}

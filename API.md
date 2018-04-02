@@ -220,7 +220,9 @@
 - payload :
 ```json
 {
-    "id": "心愿id"
+    "id": "心愿id",
+    "time": "服务时长",
+    "judge": "评价(A,B,C,D)"
 }
 ```
 
