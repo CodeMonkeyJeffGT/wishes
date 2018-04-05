@@ -90,3 +90,8 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-03-31 14:37:31
+
+#4月５日更新
+ALTER TABLE `wish` ADD `work_time` INT(11) NOT NULL DEFAULT 0;
+
+ALTER TABLE `wish` ADD `quality` TINYINT(11) NOT NULL DEFAULT 0;

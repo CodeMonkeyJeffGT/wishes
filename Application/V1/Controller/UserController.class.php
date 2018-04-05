@@ -35,7 +35,6 @@ class UserController extends ApiController {
 			}
 			if( ! isset($_GET['code']))
 			{
-				echo '<pre>';
 				$redirect_uri = 'http://nefuer.jblog.info/home/user/wx_in?redirect=' . urlencode($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . U('/V1/user/loginPage'));
 				$this->wx->userCode($redirect_uri, false, 'redirect');
 			}

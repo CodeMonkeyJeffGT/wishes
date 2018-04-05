@@ -191,7 +191,7 @@ class WishModel extends Model {
 			$this->errmsg = '您不是该心愿的发布者';
 			return FALSE;
 		}
-		if(empty($u_id[0]['angel_guy']))
+		if(empty($u_id[0]['angel_id']))
 		{
 			$this->errmsg = '心愿未被接受';
 			return FALSE;
