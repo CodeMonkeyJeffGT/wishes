@@ -10,6 +10,11 @@ class UserController extends ApiController {
 		$this->user = D('user');
 	}
 
+	public function info() {
+		$au_id = session('acc');
+		$this->apiReturn($this->user->studentInfo($au_id));
+	}
+
 	public function login()
 	{
 		$account = I('post.account');

@@ -68,6 +68,10 @@ class UserModel extends Model {
 		return $user[0];
 	}
 
+	public function studentInfo($id) {
+		return $_SESSION;
+	}
+
 	public function getError()
 	{
 		return $this->errmsg;
