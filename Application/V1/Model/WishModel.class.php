@@ -40,7 +40,7 @@ class WishModel extends Model {
 	public function listAll($au_id)
 	{
 		$sql = '
-			SELECT `id`, `created`, `deadline`, `content`, `angel_id`
+			SELECT `id`, `created`, `deadline`, `content`, `angel_id`, `done`
 			FROM `wish`
 			WHERE (`angel_id` = 0 AND `deadline` > %d AND `cancel_time` = 0)
 				OR (`angel_id` = %d)
@@ -62,10 +62,13 @@ class WishModel extends Model {
 				unset($wishes[$i]['angel_id']);
 				$wish_arr['unaccepted'][] = $wishes[$i];
 			}
-			else
+			elseif($wishes[$i]['angel_id'] === 0)
 			{
 				unset($wishes[$i]['angel_id']);
 				$wish_arr['accepted'][] = $wishes[$i];
+			} else {
+				unset($wishes[$i]['angel_id']);
+				$wish_arr['done'][] = $wishes[$i];
 			}
 		}
 		return $wish_arr;

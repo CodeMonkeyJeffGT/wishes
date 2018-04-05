@@ -134,7 +134,7 @@ class WishController extends ApiController {
 	{
 		$id = I('post.id');
 		$time = I('post.time');
-		$quality = I('post.quality');
+		$quality = I('post.judge');
 		$u_id = session('user');
 		if(empty($id))
 			$this->apiReturn('请指定心愿id', false);
