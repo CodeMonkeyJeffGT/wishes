@@ -77,8 +77,8 @@ class UserModel extends Model {
 		';
 		$user = $this->query($sql, $id)[0];
 		$sql = '
-			USE nefuer;
-			SELECT `name` FROM `user` WEHRE `acc` = %d
+			USE `nefuer`;
+			SELECT `name` FROM `user` WEHRE `acc` = %d;
 		';
 		$user['name'] = $this->query($sql, $id)[0]['name'];
 		return $user;
