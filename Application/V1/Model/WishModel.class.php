@@ -62,7 +62,7 @@ class WishModel extends Model {
 				unset($wishes[$i]['angel_id']);
 				$wish_arr['unaccepted'][] = $wishes[$i];
 			}
-			elseif($wishes[$i]['angel_id'] == 0)
+			elseif($wishes[$i]['done'] == 0)
 			{
 				unset($wishes[$i]['angel_id']);
 				$wish_arr['accepted'][] = $wishes[$i];
