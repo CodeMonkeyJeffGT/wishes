@@ -176,7 +176,7 @@ class WishModel extends Model {
 	{
 		$u_id = session('user');
 		$sql = '
-			SELECT `u_id`, `angel_guy`, `done`
+			SELECT `u_id`, `angel_id`, `done`
 			FROM `wish`
 			WHERE `id` = %d;
 		';
