@@ -202,7 +202,7 @@ class WishModel extends Model {
 		}
 		$sql = '
 			UPDATE `wish`
-			SET `done` = 1, `time` = %d, `quality` = "%s"
+			SET `done` = 1, `work_time` = %d, `quality` = "%s"
 			WHERE `id` = %d;
 		';
 		$this->execute($sql, $time, $quality, $id);
