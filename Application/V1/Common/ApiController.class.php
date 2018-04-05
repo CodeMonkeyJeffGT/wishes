@@ -13,7 +13,7 @@ class ApiController extends Controller {
 		Vendor('Wx');
 		date_default_timezone_set('PRC');
 		header('Access-Control-Allow-Credentials: true');
-        header('Access-Control-Allow-Origin:*');
+        header('Access-Control-Allow-Origin:http://localhost');
         header('Access-Control-Allow-Headers:token, Origin, X-Requested-With, Content-Type, Accept');
         header('Access-Control-Allow-Methods:PUT,POST,GET,DELETE,OPTIONS');
         header('X-Powered-By: 3.2.1');
