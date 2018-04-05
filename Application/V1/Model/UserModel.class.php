@@ -76,11 +76,7 @@ class UserModel extends Model {
 				AND `angel_id` = %d
 		';
 		$user = $this->query($sql, $id)[0];
-		$sql = '
-			USE `nefuer`;
-			SELECT `name` FROM `user` WEHRE `acc` = %d;
-		';
-		$user['name'] = $this->query($sql, $id)[0]['name'];
+		$user['name'] = $this->db(1,"mysql://root:GT338570@localhost:3306/nefuer")->query("SELECT `name` FROM `user` WEHRE `acc` = " . $id);
 		return $user;
 	}
 
