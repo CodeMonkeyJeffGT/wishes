@@ -69,7 +69,19 @@ class UserModel extends Model {
 	}
 
 	public function studentInfo($id) {
-		return $_SESSION;
+		$sql = '
+			SELECT `work_time`, `quality`
+			FROM `wish`
+			WHERE `done` = 1
+				AND `angel_id` = %d
+		';
+		$user = $this->query($sql, $id)[0];
+		$sql = '
+			USE nefuer;
+			SELECT `name` FROM `user` WEHRE `acc` = %d
+		';
+		$user['name'] = $this->query($sql, $id)[0]['name'];
+		return $user;
 	}
 
 	public function getError()
