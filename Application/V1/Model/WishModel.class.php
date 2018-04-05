@@ -200,9 +200,26 @@ class WishModel extends Model {
 			$this->errmsg = '心愿已完成';
 			return FALSE;
 		}
+		switch ($quality) {
+			case 'A':
+				$quality = 100;
+				break;
+			case 'B':
+				$quality = 80;
+				break;
+			case 'C':
+				$quality = 60;
+				break;
+			case 'D':
+				$quality = 40;
+				break;
+			default:
+				$quality = 0;
+				break;
+		}
 		$sql = '
 			UPDATE `wish`
-			SET `done` = 1, `work_time` = %d, `quality` = "%s"
+			SET `done` = 1, `work_time` = %d, `quality` = %d
 			WHERE `id` = %d;
 		';
 		$this->execute($sql, $time, $quality, $id);
