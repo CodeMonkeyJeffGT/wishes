@@ -181,7 +181,7 @@ class WishModel extends Model {
 			WHERE `id` = %d;
 		';
 		$u_id_sql = $this->query($sql, $id);
-		if(empty($u_id))
+		if(empty($u_id_sql))
 		{
 			$this->errmsg = '心愿不存在';
 			return FALSE;
