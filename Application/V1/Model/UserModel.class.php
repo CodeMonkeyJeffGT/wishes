@@ -14,7 +14,7 @@ class UserModel extends Model {
 		';
 		$user = $this->query($sql, $openid);
 		if(empty($user))
-			return FALSE;
+			return false;
 		else
 			return $user[0]['id'];
 	}
@@ -30,12 +30,12 @@ class UserModel extends Model {
 		if(empty($user))
 		{
 			$this->errmsg = '用户账号不存在';
-			return FALSE;
+			return false;
 		}
 		if($user[0]['password'] !== md5($password))
 		{
 			$this->errmsg = '密码错误';
-			return FALSE;
+			return false;
 		}
 		session('user', $user[0]['id']);
 		if( ! empty(session('openid')) && session('openid') !== $user[0]['openid'])
@@ -47,7 +47,7 @@ class UserModel extends Model {
 			';
 			$this->execute($sql, sesison('openid'), $user[0]['id']);
 		}
-		return TRUE;
+		return true;
 	}
 
 	public function userInfo($id)
@@ -61,7 +61,7 @@ class UserModel extends Model {
 		if(empty($user))
 		{
 			$this->errmsg = '用户不存在';
-			return FALSE;
+			return false;
 		}
 		$user[0]['deadline_d'] = date('Y-m-d', time() + 86400);
 		$user[0]['deadline_t'] = date('H:i', time() + 86400);

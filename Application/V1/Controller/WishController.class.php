@@ -133,9 +133,12 @@ class WishController extends ApiController {
 	public function confirm()
 	{
 		$id = I('post.id');
+		$time = I('post.time');
+		$quality = I('post.quality');
+		$u_id = session('user');
 		if(empty($id))
 			$this->apiReturn('请指定心愿id', false);
-		$wishConfirm = $this->wish->confirm($id);
+		$wishConfirm = $this->wish->confirm($id, $u_id, $time, $quality);
 		if(false === $wishConfirm)
 		{
 			$this->apiReturn($this->wish->getError(), false);

@@ -78,7 +78,7 @@ class WishModel extends Model {
 			VALUES(%d, "%s", "%s", "%s", "%s", %d, %d);
 		';
 		$this->execute($sql, $u_id, $content, $img, $guy, $phone, $deadline, time());
-		return TRUE;
+		return true;
 	}
 
 	public function wishInfo($id)
@@ -92,7 +92,7 @@ class WishModel extends Model {
 		if(empty($wish))
 		{
 			$this->errmsg = '心愿不存在';
-			return FALSE;
+			return false;
 		}
 		$wish = $wish[0];
 		if( ! empty($wish['cancel_reason']))
@@ -141,7 +141,7 @@ class WishModel extends Model {
 			WHERE `id` = %d;
 		';
 		$this->execute($sql, array($reason, time(), $id));
-		return TRUE;
+		return true;
 	}
 
 	public function accept($id, $u_id, $guy, $phone)
@@ -169,12 +169,11 @@ class WishModel extends Model {
 			WHERE `id` = %d;
 		';
 		$this->execute($sql, array($u_id, $guy, $phone, $id));
-		return TRUE;
+		return true;
 	}
 
-	public function confirm($id)
+	public function confirm($id, $u_id, $time, $quality)
 	{
-		$u_id = session('user');
 		$sql = '
 			SELECT `u_id`, `angel_id`, `done`
 			FROM `wish`
@@ -203,11 +202,11 @@ class WishModel extends Model {
 		}
 		$sql = '
 			UPDATE `wish`
-			SET `done` = 1
+			SET `done` = 1, `time` = %d, `quality` = "%s"
 			WHERE `id` = %d;
 		';
-		$this->execute($sql, $id);
-		return TRUE;
+		$this->execute($sql, $time, $quality, $id);
+		return true;
 	}
 
 	public function getError()
