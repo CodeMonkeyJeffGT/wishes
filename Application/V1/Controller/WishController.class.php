@@ -22,7 +22,7 @@ class WishController extends ApiController {
 
 	public function nefuerPage()
 	{
-		header('location:/1217/list.html');die;
+		header('location:/student/list.html');die;
 	}
 
 	public function listAll()
