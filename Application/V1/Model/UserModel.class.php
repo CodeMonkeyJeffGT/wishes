@@ -80,7 +80,13 @@ class UserModel extends Model {
 		foreach ($user as $value) {
 			$time += $value['work_time'] * $value['quality'] / 100;
 		}
-		return (int)$time;
+		$time = (int)$time;
+		if ($time < 60) {
+			$time .= 'min';
+		} else {
+			$time = (int)($time / 60) . 'h' . ($time % 60) . 'min';
+		}
+		return $time;
 	}
 
 	public function getError()
