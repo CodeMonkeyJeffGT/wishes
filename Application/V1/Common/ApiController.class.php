@@ -39,6 +39,7 @@ class ApiController extends Controller {
 			if(isset($_GET['acc']))
 			{
 				session('acc', $_GET['acc']);
+				session('name', $_GET['name']);
 				return true;
 			}
 			$this->goLogin();
