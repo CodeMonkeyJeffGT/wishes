@@ -76,8 +76,11 @@ class UserModel extends Model {
 				AND `angel_id` = %d
 		';
 		$user = $this->query($sql, $id);
-		$user['name'] = M('nefuer.user', '')->query("SELECT `name` FROM `user` WHERE `acc` = " . $id);
-		return $user;
+		$time = 0;
+		foreach ($user as $value) {
+			$time += $value['work_time'] * $value['quality'] / 100;
+		}
+		return (int)$time;
 	}
 
 	public function getError()
