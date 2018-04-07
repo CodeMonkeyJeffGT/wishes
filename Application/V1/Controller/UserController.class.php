@@ -12,6 +12,11 @@ class UserController extends ApiController {
 
 	public function info() {
 		$au_id = session('acc');
+		$this->apiReturn(array(
+			'name' => 'gt',
+			'acc' => $au_id,
+			'time' => '1h30min',
+		));
 		$this->apiReturn($this->user->studentInfo($au_id));
 	}
 
