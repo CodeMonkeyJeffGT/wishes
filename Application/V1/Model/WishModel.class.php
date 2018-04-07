@@ -10,7 +10,8 @@ class WishModel extends Model {
 		$sql = '
 			SELECT `id`, `created`, `deadline`, `content`, `angel_id`
 			FROM `wish`
-			WHERE `u_id` = %d AND (`deadline` > %d OR `angel_id` <> 0) AND `cancel_time` = 0;
+			WHERE `u_id` = %d AND (`deadline` > %d OR `angel_id` <> 0) AND `cancel_time` = 0
+			ORDER BY `done`, `id` DESC;
 		';
 		$wishes = $this->query($sql, $u_id, time());
 		$wish_arr = array(
