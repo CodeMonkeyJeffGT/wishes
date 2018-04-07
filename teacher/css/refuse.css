@@ -1,0 +1,243 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+#container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgb(224,224,224);
+}
+#content {
+    width: 100%;
+    background: #ffffff;
+    position: relative;
+}
+#content .text{
+    width: 90%;
+    margin: 0 0 0 5%;
+    height: 3.5rem;
+    border:none;
+    font-size:0.5rem;
+    resize: none;
+}
+#content .photo{
+    color:#409EFF;
+    border-bottom:1px solid #409EFF;
+    position: absolute;
+    right: 5%;
+    bottom:5%;
+}
+
+#phone{
+    margin-top: 0.6rem;
+}
+#phone li{
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    background: #ffffff;
+    border-bottom: 1px solid rgb(224,224,224);
+    font-size: 0.4rem;
+    position: relative;
+}
+#phone li span{
+    font-weight: bolder;
+    margin-left: 5%;
+}
+#phone li div{
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    border:none;
+    text-align: right;
+}
+
+#time{
+    margin-top: 0.6rem;
+}
+#time li{
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    background: #ffffff;
+    border-bottom: 1px solid rgb(224,224,224);
+    font-size: 0.4rem;
+    position: relative;
+}
+#time li span:first-child{
+    font-weight: bolder;
+    margin-left: 5%;
+}
+#time li span:last-child{
+    float:right;
+}
+
+#relation{
+    margin-top: 0.6rem;
+}
+#relation li{
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    background: #ffffff;
+    border-bottom: 1px solid rgb(224,224,224);
+    font-size: 0.4rem;
+    position: relative;
+}
+#relation li span{
+    font-weight: bolder;
+    margin-left: 5%;
+}
+#relation li div{
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    border:none;
+    text-align: right;
+}
+
+
+
+#publish{
+    width: 60%;
+    height: 1rem;
+    background: #409eff;
+    line-height: 1rem;
+    text-align: center;
+    border-radius: 20px;
+    color:#fff;
+    font-size: 0.5rem;
+    margin:0 auto;
+    margin-top: 2rem;
+}
+#publish::first-letter{
+    margin-right: 1rem;
+}
+
+.reason {
+    width: 100%;
+    background: #ffffff;
+    position: relative;
+    margin-top: 0.5rem;
+}
+.reason textarea{
+    width: 90%;
+    margin: 5% 0 0 5%;
+    height: 3.5rem;
+    border:none;
+    font-size:0.5rem;
+    resize: none;
+}
+
+#dialog{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+#dialog img{
+    width: 100%;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+#quantum{
+    margin-top: 0.6rem;
+    columns: #ff0000;
+}
+#quantum li{
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    background: #ffffff;
+    border-bottom: 1px solid rgb(224,224,224);
+    font-size: 0.4rem;
+    position: relative;
+}
+#quantum li span{
+    font-weight: bolder;
+    margin-left: 5%;
+}
+#quantum li div{
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    border:none;
+    text-align: right;
+}
+#quantum li input{
+    width: 20%;
+    height: 40px;
+    border:none;
+    border-bottom:1px solid #000;
+}
+#evaluate .evaluate{
+    height: 1.4rem;
+    background: #ffffff;
+    margin-top: 0.3rem;
+    font-size: 0.4rem;
+    line-height: 1.4rem;
+}
+#evaluate span{
+    font-weight: bolder;
+    margin-left: 5%;
+}
+#evaluate ul{
+    float:right;
+}
+#evaluate li{
+    float:left;
+    width: 1rem;
+    height: 1rem;
+    margin: 0.2rem 0 0 1rem;
+}
+#evaluate .best{
+    background: url('../img/icons/best.png');
+    background-size: 1rem 1rem
+}
+#evaluate .good{
+    background: url('../img/icons/good.png');
+    background-size: 1rem 1rem
+}
+#evaluate .middle{
+    background: url('../img/icons/middle.png');
+    background-size: 1rem 1rem
+}
+#evaluate .bad{
+    background: url('../img/icons/bad.png');
+    background-size: 1rem 1rem
+}
+#evaluate .best-select{
+    background: url('../img/icons/best-select.png');
+    background-size: 1rem 1rem
+}
+#evaluate .good-select{
+    background: url('../img/icons/good-select.png');
+    background-size: 1rem 1rem
+}
+#evaluate .middle-select{
+    background: url('../img/icons/middle-select.png');
+    background-size: 1rem 1rem
+}
+#evaluate .bad-select{
+    background: url('../img/icons/bad-select.png');
+    background-size: 1rem 1rem
+}
+#evaluate li img{
+    width: 1rem;
+    height: 1rem;
+}

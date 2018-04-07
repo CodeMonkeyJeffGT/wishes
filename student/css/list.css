@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+#container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(224,224,224);
+}
+
+#un-claim .title{
+    color:#409EFF;
+    height: 1rem;
+    line-height: 1rem;
+    font-weight: bolder;
+}
+#un-claim .title span{
+    margin-left: 5%;
+}
+#un-claim ul li{
+    width: 100%;
+    height: 2.5rem;
+    background: #ffffff;
+    overflow: hidden;
+    border-bottom:1px solid rgb(224,224,224);
+}
+#un-claim ul li .container{
+    width: 90%;
+    margin:0 auto;
+    margin-top: 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    
+}
+#un-claim ul li .time{
+    flex:3;
+    text-align: left;  
+}
+#un-claim ul li .time .publish{
+    font-size:0.5rem;
+}
+#un-claim ul li .time .get{
+    margin-top: 3%;
+    color: rgb(167,167,167);
+    font-size: 0.4rem;
+}
+
+#un-claim ul li .content{
+    flex:3;
+    text-align: right;
+    font-size:0.5rem;
+}
+
+
+
+#claimed .title{
+    color:#67C23A;
+    height: 1rem;
+    line-height: 1rem;
+    font-weight: bolder;
+}
+#claimed .title span{
+    margin-left: 5%;
+}
+#claimed ul li{
+    width: 100%;
+    height: 2.5rem;
+    background: #ffffff;
+    overflow: hidden;
+    border-bottom:1px solid rgb(224,224,224);
+}
+#claimed ul li .container{
+    width: 90%;
+    margin:0 auto;
+    margin-top: 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    
+}
+#claimed ul li .time{
+    flex:3;
+    text-align: left;  
+}
+#claimed ul li .time .publish{
+    font-size:0.5rem;
+}
+#claimed ul li .time .get{
+    margin-top: 3%;
+    color: rgb(167,167,167);
+    font-size: 0.4rem;
+}
+
+#claimed ul li .content{
+    flex:3;
+    text-align: right;
+    font-size:0.5rem;
+}
+
+#add{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    background: #409eff;
+}
+#add img{
+    width: 0.8rem;
+    margin:0.1rem 0.1rem;
+}
+
+
+#footer{
+    width: 100%;
+    position: fixed;
+    display:flex;
+    flex-direction: row;
+    bottom: 0;
+    height: 1.5rem;
+    background: #fff;
+}
+#footer div{
+    flex:1;
+    height: 1.5rem;
+}
+#footer .heart{
+   background: url('../img/icons/heart.png') no-repeat center; 
+   background-size: 1rem 1rem
+}
+#footer .list{
+    background: url('../img/icons/list-select.png') no-repeat center; 
+    background-size: 1rem 1rem
+}
+#footer .info{
+    background: url('../img/icons/info.png') no-repeat center; 
+    background-size: 1rem 1rem
+}

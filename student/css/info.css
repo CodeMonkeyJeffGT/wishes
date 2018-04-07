@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+#container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(224,224,224);
+}
+
+
+#info li{
+    margin-top: 0.6rem;
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    background: #ffffff;
+    font-size: 0.4rem;
+}
+#info li .title{
+    font-weight: bolder;
+    float:left;
+    margin-left: 0.4rem;
+}
+#info li .value{
+    float:right;
+    margin-right: 0.4rem;
+}
+
+
+
+#footer{
+    width: 100%;
+    position: fixed;
+    display:flex;
+    flex-direction: row;
+    bottom: 0;
+    height: 1.5rem;
+    background: #fff;
+}
+#footer div{
+    flex:1;
+    height: 1.5rem;
+}
+#footer .heart{
+   background: url('../img/icons/heart.png') no-repeat center; 
+   background-size: 1rem 1rem
+}
+#footer .list{
+    background: url('../img/icons/list.png') no-repeat center; 
+    background-size: 1rem 1rem
+}
+#footer .info{
+    background: url('../img/icons/info-select.png') no-repeat center; 
+    background-size: 1rem 1rem
+}
