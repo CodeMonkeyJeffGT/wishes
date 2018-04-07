@@ -49,7 +49,8 @@ class WishModel extends Model {
 		$wishes = $this->query($sql, time(), $au_id);
 		$wish_arr = array(
 			'accepted' => array(),
-			'unaccepted' => array()
+			'unaccepted' => array(),
+			'done' => array(),
 		);
 		for($i = 0, $iloop =count($wishes); $i < $iloop; $i++)
 		{
