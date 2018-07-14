@@ -160,7 +160,7 @@ $(function () {
                     },
                     data:{
                         id:localStorage.getItem('heartId'),
-                        time: $('#time-hour')[0].value * 60 + $('#time-minute')[0].value,
+                        time:parseInt($('#time-hour')[0].value * 60) + parseInt($('#time-minute')[0].value || 0), 
                         judge: evaluateValue,
                     },
                     xhrFields: {
